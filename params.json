@@ -1,0 +1,6 @@
+{
+  "name": "Augmented reality",
+  "tagline": "Program based on marker based technique using OpenCV & Python",
+  "body": "# augmented_reality\r\nProgram based on marker based technique using OpenCV &amp; Python\r\n\r\nRequirements-\r\n Python 2.7,\r\n OpenCV 3.1,\r\n numpy library,\r\n gstreamer python or \r\n ffmpeg python\r\n \r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}

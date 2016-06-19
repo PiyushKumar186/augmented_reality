@@ -5,8 +5,8 @@ import glob
 
 cap = cv2.VideoCapture(0)
 
-images = glob.glob('*.jpg') #all the jpg images in the folder could be displayed
-currentImage=6  #the first image is selected
+images = glob.glob('*.jpg') #all the jpg images in the folder can be displayed
+currentImage=6  #the first image is selected in your local directory 
 
 replaceImg=cv2.imread(images[currentImage])
 rows,cols,ch = replaceImg.shape
@@ -16,13 +16,13 @@ zoomLevel = 0   #when zoomLevel is positive it zooms in, when its negative it zo
 processing = True   #boolean variable using for disabling the image processing
 maskThreshold=10
 
-while(True):
-    # Capture frame-by-frame
-    ret, img = cap.read()
+while(True): #IF Condition is true
+    # Then the video camera captures frame-by-frame
+    ret, img = cap.read()  #ret->return
     # Our operations on the frame come here
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)    #cvtcolor i.e convert color is used for converting the colored frame into gray
     #This function is used to detect the corners of the chessboard, 9x6 is the number of corners to find
-    ret, corners = cv2.findChessboardCorners(gray, (9,6),None)
+    ret, corners = cv2.findChessboardCorners(gray, (9,6),None) #9 X 6 is our defined chessboard pattern you can use any the best case is (9,6),(9,5) etc or basically it depends on the image dimension 
 
     # If found, do the processing
     if ret == True and processing:
@@ -42,7 +42,7 @@ while(True):
         #The two images are added using the mask
         for c in range(0,3):
             img[:, :, c] = dst[:,:,c]*(1-mask[:,:]) + img[:,:,c]*mask[:,:]
-#           cv2.imshow('mask',mask*255)
+#           cv2.imshow('mask',mask*255) #This is the masking technique which will show how this whole program works uncomment it, if you want to understand the basic principle
      #finally the result is presented
     cv2.imshow('img',img)  
     
